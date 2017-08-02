@@ -1,0 +1,22 @@
+{
+  "name": "chumbucket",
+  "version": "1.0.0",
+  "description": "Thieving chumbucket",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fuzzyset.js": "0.0.4",
+    "request": "^2.81.0",
+    "request-promise-native": "^1.0.4",
+    "string-similarity": "^1.2.0",
+    "twitter": "^1.7.1",
+    "url-join": "^2.0.2"
+  },
+  "devDependencies": {
+    "eslint": "^4.3.0"
+  }
+}
