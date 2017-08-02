@@ -1,6 +1,6 @@
 const fs = require('fs');
 const FuzzySet = require('fuzzyset.js');
-const partialConfig = require('./config.json');
+const config = require('./config.json');
 const promiseRequest = require('request-promise-native');
 const stringSimilarity = require('string-similarity');
 const Twitter = require('twitter');
@@ -25,11 +25,19 @@ Log.levels.forEach(level => {
   Log.always = console.info; // eslint-disable-line no-console
 });
 
+function writeConfig(config) {
+  return new Promise((resolve, reject) => {
+    fs.writeFile('./config.json', 
+                 JSON.stringify(config), 
+                 (err) => err ? reject(err) : resolve(config));
+  });
+}
+
 function getConfig() {
-  if (partialConfig.bearer_token) return Promise.resolve(partialConfig);
+  if (config.bearer_token) return Promise.resolve(config);
 
   const secret = Buffer.from(
-    `${partialConfig.consumer_key}:${partialConfig.consumer_secret}`,
+    `${config.consumer_key}:${config.consumer_secret}`,
     'utf-8'
   ).toString('base64');
 
@@ -44,12 +52,8 @@ function getConfig() {
     },
     json: true
   }).then(response => {
-    Object.assign(partialConfig, {bearer_token: response.access_token});
-    return new Promise((resolve, reject) => {
-      fs.writeFile('./config.json', 
-                   JSON.stringify(partialConfig), 
-                   (err) => err ? reject(err) : resolve(partialConfig));
-    });
+    Object.assign(config, {bearer_token: response.access_token});
+    return writeConfig(config);
   });
 }
 
@@ -188,4 +192,6 @@ getConfig().then(config => {
     .forEach(el => Log.always(el.summary));
 }).catch(err => {
   Log.error('Failed:', err);
+  delete config.bearer_token;
+  return writeConfig(config);
 });
