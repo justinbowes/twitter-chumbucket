@@ -3,6 +3,12 @@ Thieving Chumbucket!
 
 ## Looks for stolen tweets.
 
+### Configuration
+
+Visit https://apps.twitter.com/ to create an application. Copy `config.sample.json` to `config.json`, and place your Consumer Key and Consumer Secret in this file. (The examples given are an invalidated keypair, so use your own.)
+
+### Usage
+
   Command line:
   `node index.js username [count]`
 
