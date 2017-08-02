@@ -3,14 +3,14 @@
   "version": "1.0.0",
   "description": "Thieving chumbucket",
   "main": "index.js",
-  "scripts": {
-  },
+  "scripts": {},
   "author": {
     "name": "Justin Bowes",
     "url": "http://informilabs.com"
-  }, 
+  },
   "license": "MIT",
   "dependencies": {
+    "cli-table2": "^0.2.0",
     "fuzzyset.js": "0.0.4",
     "request": "^2.81.0",
     "request-promise-native": "^1.0.4",
