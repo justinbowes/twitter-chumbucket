@@ -4,10 +4,12 @@
   "description": "Thieving chumbucket",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": {
+    "name": "Justin Bowes",
+    "url": "http://informilabs.com"
+  }, 
+  "license": "MIT",
   "dependencies": {
     "fuzzyset.js": "0.0.4",
     "request": "^2.81.0",
